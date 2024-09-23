@@ -11,11 +11,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                sh '''
-                apt-get update
-                apt-get install -y python3 python3-pip
-                python3 -m unittest discover -s tests
-                '''
+                sh 'docker run --rm api-image python -m unittest discover -s tests'
             }
         }
         stage('Deploy to Test') {
