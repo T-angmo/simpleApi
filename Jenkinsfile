@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t api-image .'
-                    sh 'docker push your-registry/api-image'
+                    sh 'docker push KowMungai/api-image'
                 }
             }
         }
@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Run Robot Tests') {
             steps {
-                git 'https://github.com/your-robot-test-repo.git'
+                git 'https://github.com/KowMunGai/robotTest.git'
                 sh 'robot robot_tests'
             }
         }
