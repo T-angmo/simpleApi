@@ -24,7 +24,7 @@ pipeline {
         stage('Run Robot Tests') {
             steps {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
-                sh 'robot robot_tests'
+                sh 'robot robotTest.robot'
             }
         }
         stage('Deploy to Pre-Prod') {
