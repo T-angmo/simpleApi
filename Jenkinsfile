@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Run Robot Tests') {
             steps {
-                git 'https://github.com/KowMunGai/robotTest.git'
+                git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'robot robot_tests'
             }
         }
