@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     sh 'docker build -t api-image .'
-                    sh 'docker push kowmungai/api-image'
+                    sh 'docker tag api-image kowmungai/api-image:latest'
                 }
             }
         }
