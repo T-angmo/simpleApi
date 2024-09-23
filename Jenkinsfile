@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy to Pre-Prod') {
             steps {
                 script {
-                    sh 'ssh user@pre-prod-server "docker run -d -p 5000:5000 api-image"'
+                    sh 'docker run -d -p 5000:5000 api-image'
                 }
             }
         }
