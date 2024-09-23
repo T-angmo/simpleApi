@@ -16,15 +16,14 @@ pipeline {
         }
         stage('Deploy to Test') {
             steps {
-                script {
-                    sh 'docker run -d -p 5000:5000 api-image'
-                }
+                sh 'docker network create my_network || true'
+                sh 'docker run -d --network my_network --name api-container -p 5000:5000 api-image'
             }
         }
         stage('Run Robot Tests') {
             steps {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
-                sh 'docker run --rm -v $(pwd):/tests api-image robot /tests/robotTest.robot'
+                sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests api-image robot /tests/robotTest.robot'
             }
         }
         stage('Deploy to Pre-Prod') {
@@ -33,6 +32,13 @@ pipeline {
                     sh 'ssh user@pre-prod-server "docker run -d -p 5000:5000 api-image"'
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            sh 'docker stop api-container || true'
+            sh 'docker rm api-container || true'
         }
     }
 }
