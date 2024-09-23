@@ -24,7 +24,7 @@ pipeline {
         stage('Run Robot Tests') {
             steps {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
-                sh 'docker run --rm -v $(pwd):/tests api-image robot robotTest.robot'
+                sh 'docker run --rm -v $(pwd):/tests api-image robot /tests/robotTest.robot'
             }
         }
         stage('Deploy to Pre-Prod') {
