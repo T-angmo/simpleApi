@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Unit Test') {
             steps {
-                sh 'docker run --rm api-image python -m unittest discover -s .'
+                sh 'docker run --rm api-image python -m unittest discover -s api'
             }
         }
         stage('Deploy to Test') {
