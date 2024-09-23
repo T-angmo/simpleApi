@@ -17,7 +17,7 @@ pipeline {
         stage('Deploy to Test') {
             steps {
                 script {
-                    sh 'ssh user@test-server "docker run -d -p 5000:5000 api-image"'
+                    sh 'docker run -d -p 5000:5000 api-image'
                 }
             }
         }
