@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/getcode')
 def getcode():
-    return '111111'
+    return '22222'
 
 @app.route('/plus/<int:a>/<int:b>')
 def plus(a, b):
