@@ -56,7 +56,7 @@ pipeline {
                 // sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests -w /tests api-image robot /tests/robotTest.robot'
                 // sh 'pwd'
                 // sh 'ls'
-                sh 'robot test_plus.robot'
+                sh 'python3 -m robot robotTest.robot'
             }
         }
 
