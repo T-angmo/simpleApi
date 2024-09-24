@@ -45,18 +45,9 @@ pipeline {
             }
 
             steps {
-                // sh 'python3 -m venv .venv'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh '. .venv/bin/activate'
                 sh '/home/user/workspace/simpleApi/.venv/bin/pip install robotframework robotframework-requests'
-                // sj 'pwd'
-                // sh 'ls'
-                // sh 'robot --version'
-                // sh 'pwd'
-                // sh 'ls'
-                // sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests -w /tests api-image robot /tests/robotTest.robot'
-                // sh 'pwd'
-                // sh 'ls'
                 sh '/home/user/workspace/simpleApi/.venv/bin/python3 -m robot robotTest.robot'
             }
         }
@@ -73,11 +64,11 @@ pipeline {
                     usernameVariable: 'githubUser'
                 )]
             )
-                sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
-                sh "docker pull ${IMAGE_NAME}"
-                sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-                sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+                sh 'docker login ghcr.io -u ${githubUser} -p ${githubPassword}'
+                sh 'docker pull ${IMAGE_NAME}'
+                sh 'docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}'
+                sh 'docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}'
+                sh 'docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}'
             }
         }
 
