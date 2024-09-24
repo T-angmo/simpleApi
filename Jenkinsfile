@@ -76,16 +76,17 @@ pipeline {
                     label 'pre-prod'
             }
             steps {
-                withCredentials(
-                [usernamePassword(
-                    credentialsId: 'tnt',
-                    passwordVariable: 'githubPassword',
-                    usernameVariable: 'githubUser'
-                )]
-            ) {
-                    sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
-                    sh "docker pull ${IMAGE_NAME}"
-            }
+                //     withCredentials(
+                //     [usernamePassword(
+                //         credentialsId: 'tnt',
+                //         passwordVariable: 'githubPassword',
+                //         usernameVariable: 'githubUser'
+                //     )]
+                // )
+                {
+                        sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
+                        sh "docker pull ${IMAGE_NAME}"
+                }
             }
         }
         stage('runcontainer') {
