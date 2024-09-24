@@ -99,10 +99,12 @@ pipeline {
                     label 'pre-prod'
             }
             steps {
-                    sh 'docker stop api-container'
-                    sh 'docker rm api-container'
+                    sh 'docker kill $(docker ps -q) || true'
+                    sh 'docker rm $(docker ps -a) || true'
+                    
                     sh "docker run -d -p 5000:5000 --name api-container ${IMAGE_NAME}"
             }
+            
         }
         // stage('Deploy to Pre-Prod') {
         //     agent {
