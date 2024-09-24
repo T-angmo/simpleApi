@@ -53,9 +53,14 @@ pipeline {
                 // sh 'ls'
                 // sh 'source my_env/bin/activate'
                 // sh 'cd ..'
-                git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
+                sh 'pwd'
                 sh 'ls'
-                // sh 'cd robotTest'
+                git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
+                sh 'pwd'
+                sh 'ls'
+                sh 'cd robotTest'
+                sh 'pwd'
+                sh 'ls'
                 sh 'robot robotTest.robot'
             }
         }
