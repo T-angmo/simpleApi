@@ -60,7 +60,8 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'pwd'
                 sh 'ls'
-                sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests api-image robot /tests/robotTest.robot'
+                sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests -w /tests api-image robot /tests/robotTest.robot
+'
                 sh 'pwd'
                 sh 'ls'
                 sh 'robot robotTest.robot'
