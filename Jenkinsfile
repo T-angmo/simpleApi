@@ -56,7 +56,7 @@ pipeline {
             //     withCredentials(
             //     [usernamePassword(
             //         credentialsId: 'tnt',
-            //         passwordVariable: 'githubPassword',
+            //         passwordVariable: 'githubPassword',!!!!!!!!!!!!!!!
             //         usernameVariable: 'githubUser'
             //     )]
             // )
