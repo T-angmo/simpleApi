@@ -104,7 +104,7 @@ pipeline {
                 sh "docker pull ${IMAGE_NAME}"
             }
         }
-        stage('runcontainer') {
+        stage('Run container') {
             agent {
                     label 'pre-prod'
             }
