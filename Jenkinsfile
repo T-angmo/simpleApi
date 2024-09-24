@@ -46,8 +46,9 @@ pipeline {
 
             steps {
                 // sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/robotTest api-image robot robotTest.robot'
-                sh 'cd ~'
+                sh 'cd ~/enviroments'
                 sh 'source my_env/bin/activate'
+                sh 'cd ..'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'cd robotTest'
                 sh 'robot robotTest.robot'
