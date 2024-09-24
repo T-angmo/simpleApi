@@ -58,9 +58,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'pwd'
                 sh 'ls'
-                sh 'cd robotTest'
-                sh 'pwd'
-                sh 'ls'
                 sh 'robot robotTest.robot'
             }
         }
