@@ -22,7 +22,7 @@ pipeline {
             agent {
                     label 'test'
             }
-            
+
             steps {
                 sh 'docker run --rm api-image python -m unittest unit_test.py'
             }
@@ -31,7 +31,7 @@ pipeline {
             agent {
                     label 'test'
             }
-            
+
             steps {
                 sh 'docker network create my_network || true'
                 sh 'docker run -d --network my_network --name api-container -p 5000:5000 api-image'
@@ -41,7 +41,7 @@ pipeline {
             agent {
                     label 'test'
             }
-            
+
             steps {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/tests api-image robot /tests/robotTest.robot'
@@ -53,19 +53,19 @@ pipeline {
                     label 'test'
             }
             steps {
-            //     withCredentials(
-            //     [usernamePassword(
-            //         credentialsId: 'tnt',
-            //         passwordVariable: 'githubPassword',!!!!!!!!!!!!!!!
-            //         usernameVariable: 'githubUser'
-            //     )]
-            // )
-            // sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
-                sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
+                withCredentials(
+                [usernamePassword(
+                    credentialsId: 'myGitHub',
+                    passwordVariable: 'githubPassword',
+                    usernameVariable: 'githubUser'
+                )]
+            )
+                sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
                 sh "docker pull ${IMAGE_NAME}"
                 sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
+            }
         }
 
         stage('Pull image') {
@@ -73,14 +73,14 @@ pipeline {
                     label 'pre-prod'
             }
             steps {
-                //     withCredentials(
-                //     [usernamePassword(
-                //         credentialsId: 'tnt',
-                //         passwordVariable: 'githubPassword',
-                //         usernameVariable: 'githubUser'
-                //     )]
-                // )
-                sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
+                    withCredentials(
+                    [usernamePassword(
+                        credentialsId: 'myGitHub',
+                        passwordVariable: 'githubPassword',
+                        usernameVariable: 'githubUser'
+                    )]
+                )
+                sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
                 sh "docker pull ${IMAGE_NAME}"
             }
         }
@@ -98,13 +98,13 @@ pipeline {
         //     agent {
         //             label 'pre-prod'
         //     }
-            
-        //     steps {
-        //         script {
-        //             sh 'docker run -d -p 5001:5000 api-image'
-        //         }
-        //     }
-        // }
+
+    //     steps {
+    //         script {
+    //             sh 'docker run -d -p 5001:5000 api-image'
+    //         }
+    //     }
+    // }
     }
 
     post {
@@ -113,5 +113,4 @@ pipeline {
             sh 'docker rm api-container || true'
         }
     }
-}
 }
