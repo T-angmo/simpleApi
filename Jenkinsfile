@@ -14,7 +14,7 @@ pipeline {
                 script {
                     sh 'docker kill $(docker ps -q) || true'
                     sh 'docker build -t api-image .'
-                    sh 'docker tag api-image kowmungai/api-image:latest'
+                    sh 'docker tag api-image kowmungai/api-image'
                 }
             }
         }
