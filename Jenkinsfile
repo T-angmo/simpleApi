@@ -47,7 +47,7 @@ pipeline {
             steps {
                 // sh 'python3 -m venv .venv'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
-                sh 'source .venv/bin/activate'
+                sh 'bash -c "source .venv/bin/activate"'
                 // sj 'pwd'
                 // sh 'ls'
                 // sh 'robot --version'
