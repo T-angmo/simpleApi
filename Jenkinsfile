@@ -14,6 +14,8 @@ pipeline {
                 script {
                     sh 'docker kill $(docker ps -q) || true'
                     sh 'docker rm $(docker ps -a) || true'
+
+                    git branch: 'main', url: 'https://github.com/KowMunGai/simpleApi.git'
                     sh 'docker build -t api-image .'
                     sh 'docker tag api-image kowmungai/api-image:latest'
                 }
