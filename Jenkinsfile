@@ -60,15 +60,12 @@ pipeline {
             //         usernameVariable: 'githubUser'
             //     )]
             // )
-            {
-                // sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
+            // sh "docker login ghcr.io -u ${githubUser} -p ${githubPassword}"
                 sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
                 sh "docker pull ${IMAGE_NAME}"
                 sh "docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 sh "docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}"
                 sh "docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}"
-            }
-            }
         }
 
         stage('Pull image') {
@@ -83,10 +80,8 @@ pipeline {
                 //         usernameVariable: 'githubUser'
                 //     )]
                 // )
-                {
-                        sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
-                        sh "docker pull ${IMAGE_NAME}"
-                }
+                sh "echo <your_token> | docker login ghcr.io -u KowMunGai -p-stdin"
+                sh "docker pull ${IMAGE_NAME}"
             }
         }
         stage('runcontainer') {
@@ -94,9 +89,9 @@ pipeline {
                     label 'pre-prod'
             }
             steps {
-                    sh 'docker stop simple-api-container02'
-                    sh 'docker rm simple-api-container02'
-                    sh "docker run -d -p 8000:8000 --name simple-api-container02 ${IMAGE_NAME}"
+                    sh 'docker stop api-container'
+                    sh 'docker rm api-container'
+                    sh "docker run -d -p 5000:5000 --name api-container ${IMAGE_NAME}"
             }
         }
         // stage('Deploy to Pre-Prod') {
