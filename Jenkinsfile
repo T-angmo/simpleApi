@@ -53,6 +53,7 @@ pipeline {
                 // sh 'ls'
                 // sh 'source my_env/bin/activate'
                 // sh 'cd ..'
+                sh 'robot --version'
                 sh 'pwd'
                 sh 'ls'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
