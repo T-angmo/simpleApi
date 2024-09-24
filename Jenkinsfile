@@ -45,19 +45,11 @@ pipeline {
             }
 
             steps {
-                sj 'pwd'
-                sh 'ls'
-                sh 'cd environments/'
-                sj 'pwd'
-                sh 'ls'
-                sh 'source my_env/bin/activate'
-                sj 'pwd'
-                sh 'ls'
                 sh 'python3 -m venv .venv'
                 sh 'source .venv/bin/activate'
-                sh 'robot --version'
-                sh 'pwd'
+                sj 'pwd'
                 sh 'ls'
+                sh 'robot --version'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh 'pwd'
                 sh 'ls'
