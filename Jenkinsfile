@@ -53,6 +53,7 @@ pipeline {
                 // sh 'ls'
                 // sh 'source my_env/bin/activate'
                 // sh 'cd ..'
+                sh 'pip install --no-cache-dir --upgrade robotframework robotframework-requests'
                 sh 'robot --version'
                 sh 'pwd'
                 sh 'ls'
