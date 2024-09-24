@@ -45,7 +45,6 @@ pipeline {
             }
 
             steps {
-                // sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/robotTest api-image robot robotTest.robot'
                 // sh 'ls'
                 // sh 'cd ~'
                 // sh 'ls'
@@ -53,12 +52,15 @@ pipeline {
                 // sh 'ls'
                 // sh 'source my_env/bin/activate'
                 // sh 'cd ..'
-                sh 'python3 -m venv .venv'
-                sh 'source .venv/bin/activate'
-                sh 'robot --version'
+                // sh 'python3 -m venv .venv'
+                // sh 'source .venv/bin/activate'
+                // sh 'robot --version'
                 sh 'pwd'
                 sh 'ls'
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
+                sh 'pwd'
+                sh 'ls'
+                sh 'docker run --rm --network my_network -v /var/lib/jenkins/workspace/simpleApi:/robotTest api-image robot robotTest.robot'
                 sh 'pwd'
                 sh 'ls'
                 sh 'robot robotTest.robot'
