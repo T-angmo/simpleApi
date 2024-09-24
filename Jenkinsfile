@@ -48,7 +48,7 @@ pipeline {
                 // sh 'python3 -m venv .venv'
                 // git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh '. .venv/bin/activate'
-                sh 'pip install robotframework'
+                sh '/home/user/workspace/simpleApi/.venv/bin/pip install robotframework robotframework-requests'
                 // sj 'pwd'
                 // sh 'ls'
                 // sh 'robot --version'
