@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'ghcr.io/KowMunGai/simpleApi'
+        IMAGE_NAME = 'ghcr.io/kowmungai/simpleapi'
     }
 
     stages {
