@@ -51,6 +51,7 @@ pipeline {
                 sh '/home/user/workspace/simpleApi/.venv/bin/pip install robotframework robotframework-requests'
                 sh 'ls -a'
                 sh '/home/user/workspace/simpleApi/.venv/bin/python3 -m robot robotTest.robot'
+                sh 'ls -a'
             }
         }
 
