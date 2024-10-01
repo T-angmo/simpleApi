@@ -48,11 +48,10 @@ pipeline {
                 dir('robotTest') {
                     git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 }
-                
-                sh 'cd robotTest'
                 sh '. .venv/bin/activate'
                 sh '/home/user/workspace/simpleApi/robotTest/.venv/bin/pip install robotframework robotframework-requests'
-                sh '/home/user/workspace/simpleApi/robotTest/.venv/bin/python3 -m robot robotTest.robot'
+                sh '/home/user/workspace/simpleApi/robotTest/.venv/bin/python3 -m robot /home/user/workspace/simpleApi/robotTest/robotTest.robot'
+                }
             }
         }
 
