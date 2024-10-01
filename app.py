@@ -29,11 +29,11 @@ app = Flask(__name__)
 @app.route('/is_prime/<int:a>')
 def is_prime(a):
     if a <= 1:
-        return False
+        return str('true')
     for i in range(2, int(a ** 0.5) + 1):
         if a % i == 0:
-            return False
-    return True
+            return str('false')
+    return str('true')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

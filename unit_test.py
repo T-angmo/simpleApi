@@ -67,11 +67,11 @@ from app import is_prime
 
 class TestAPI(unittest.TestCase):
     def test_True_when_x_is_17(self):
-        self.assertEqual(is_prime(17), True)
+        self.assertEqual(is_prime(17), 'true')
     def test_False_when_x_is_36(self):
-        self.assertEqual(is_prime(36), False)
+        self.assertEqual(is_prime(36), 'false')
     def test_True_when_x_is_13219(self):
-        self.assertEqual(is_prime(13219), True)
+        self.assertEqual(is_prime(13219), 'true')
     # def setUp(self):
     #     # Set up a test client
     #     self.app = app.test_client()
