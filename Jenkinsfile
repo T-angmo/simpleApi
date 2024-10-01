@@ -47,7 +47,9 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
                 sh '. .venv/bin/activate'
+                sh 'ls -a'
                 sh '/home/user/workspace/simpleApi/.venv/bin/pip install robotframework robotframework-requests'
+                sh 'ls -a'
                 sh '/home/user/workspace/simpleApi/.venv/bin/python3 -m robot robotTest.robot'
             }
         }
