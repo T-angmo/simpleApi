@@ -119,10 +119,10 @@ pipeline {
     // }
     }
 
-    post {
-        always {
-            sh 'docker stop api-container || true'
-            sh 'docker rm api-container || true'
-        }
-    }
+    // post {
+    //     always {
+    //         sh 'docker stop api-container || true'
+    //         sh 'docker rm api-container || true'
+    //     }
+    // }
 }

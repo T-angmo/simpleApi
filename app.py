@@ -1,14 +1,39 @@
-from flask import Flask
+# from flask import Flask, jsonify
+
+# app = Flask(__name__)
+
+# # @app.route('/getcode')
+# # def getcode():
+# #     return '6969 111'
+
+# # @app.route('/plus/<int:a>/<int:b>')
+# # def plus(a, b):
+# #     return str(a + b)
+
+# @app.route('/is_prime/<int:a>')
+# def is_prime(a):
+#     if a <= 1:
+#         return False
+#     for i in range(2, int(a ** 0.5) + 1):
+#         if a % i == 0:
+#             return False
+#     return True
+
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5000)
+
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-@app.route('/getcode')
-def getcode():
-    return '6969 111'
-
-@app.route('/plus/<int:a>/<int:b>')
-def plus(a, b):
-    return str(a + b)
+@app.route('/is_prime/<int:a>')
+def is_prime(a):
+    if a <= 1:
+        return str('true')
+    for i in range(2, int(a ** 0.5) + 1):
+        if a % i == 0:
+            return str('false')
+    return str('true')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
