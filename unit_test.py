@@ -63,37 +63,17 @@
 
 
 import unittest
-from app import is_prime
+from app import  mul5
 
 class TestAPI(unittest.TestCase):
-    def test_True_when_x_is_17(self):
-        self.assertEqual(is_prime(17), 'true')
-    def test_False_when_x_is_36(self):
-        self.assertEqual(is_prime(36), 'false')
-    def test_True_when_x_is_13219(self):
-        self.assertEqual(is_prime(13219), 'true')
-    # def setUp(self):
-    #     # Set up a test client
-    #     self.app = app.test_client()
-    #     self.app.testing = True
 
-    # def test_is_prime_true(self):
-    #     # Test a prime number
-    #     response = self.app.get('/is_prime/7')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(response.get_json()['result'], True)
+    def test_x_is_1(self):
+        self.assertEqual(mul5(1), '5.0')
+    def test_x_is_neg10(self):
+        self.assertEqual(mul5(-10), '-50.0')
+    def test_x_is_1dot5(self):
+        self.assertEqual(mul5(1.5), '7.5')
 
-    # def test_is_prime_false(self):
-    #     # Test a non-prime number
-    #     response = self.app.get('/is_prime/4')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(response.get_json()['result'], False)
-
-    # def test_is_prime_edge_case(self):
-    #     # Test edge cases
-    #     response = self.app.get('/is_prime/1')
-    #     self.assertEqual(response.status_code, 200)
-    #     self.assertEqual(response.get_json()['result'], False)
 
 if __name__ == '__main__':
     unittest.main()
