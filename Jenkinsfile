@@ -49,7 +49,7 @@ pipeline {
                     git branch: 'main', url: 'https://github.com/T-angmo/robotTest.git'
                 }
                 
-                sh 'robot ~/jenkins/robotTest/robotTest.robot'
+                sh 'robot ~/jenkins/jenkins/workspace/MysimpleAPI/robotTest/robotTest.robot'
             }
         }
 
