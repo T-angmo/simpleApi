@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'ghcr.io/T-angmo/simpleapi'
+        IMAGE_NAME = 'ghcr.io/t-angmo/simpleapi'
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
                     sh 'docker rm $(docker ps -a) || true'
 
                     sh 'docker build -t api-image .'
-                    sh 'docker tag api-image T-angmo/api-image:latest'
+                    sh 'docker tag api-image t-angmo/api-image:latest'
                 }
             }
         }
@@ -71,8 +71,8 @@ pipeline {
                     // sh 'docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}'
                     // sh 'docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}'
                     // sh 'docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}'
-                    sh 'docker build -t ghcr.io/T-angmo/simpleapi .'
-                    sh 'docker push ghcr.io/T-angmo/simpleapi'
+                    sh 'docker build -t ghcr.io/t-angmo/simpleapi .'
+                    sh 'docker push ghcr.io/t-angmo/simpleapi'
                 }
             }
         }
