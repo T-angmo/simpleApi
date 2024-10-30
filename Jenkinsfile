@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        IMAGE_NAME = 'ghcr.io/kowmungai/simpleapi'
+        IMAGE_NAME = 'ghcr.io/T-angmo/simpleapi'
     }
 
     stages {
@@ -16,7 +16,7 @@ pipeline {
                     sh 'docker rm $(docker ps -a) || true'
 
                     sh 'docker build -t api-image .'
-                    sh 'docker tag api-image kowmungai/api-image:latest'
+                    sh 'docker tag api-image T-angmo/api-image:latest'
                 }
             }
         }
@@ -46,11 +46,11 @@ pipeline {
 
             steps {
                 dir('robotTest') {
-                    git branch: 'main', url: 'https://github.com/KowMunGai/robotTest.git'
+                    git branch: 'main', url: 'https://github.com/T-angmo/robotTest.git'
                 }
                 sh '. .venv/bin/activate'
-                sh '/home/user/workspace/simpleApi/robotTest/.venv/bin/pip install robotframework robotframework-requests'
-                sh '/home/user/workspace/simpleApi/robotTest/.venv/bin/python3 -m robot /home/user/workspace/simpleApi/robotTest/robotTest.robot'
+                sh '~/jenkins/simpleApi/robotTest/.venv/bin/pip install robotframework robotframework-requests'
+                sh '~/jenkins/simpleApi/robotTest/.venv/bin/python3 -m robot ~/jenkins/simpleApi/robotTest/robotTest.robot'
             }
         }
 
@@ -72,8 +72,8 @@ pipeline {
                     // sh 'docker tag ${IMAGE_NAME} ${IMAGE_NAME}:${env.BUILD_NUMBER}'
                     // sh 'docker push ${IMAGE_NAME}:${env.BUILD_NUMBER}'
                     // sh 'docker rmi ${IMAGE_NAME}:${env.BUILD_NUMBER}'
-                    sh 'docker build -t ghcr.io/kowmungai/simpleapi .'
-                    sh 'docker push ghcr.io/kowmungai/simpleapi'
+                    sh 'docker build -t ghcr.io/T-angmo/simpleapi .'
+                    sh 'docker push ghcr.io/T-angmo/simpleapi'
                 }
             }
         }
