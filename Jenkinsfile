@@ -48,9 +48,8 @@ pipeline {
                 dir('robotTest') {
                     git branch: 'main', url: 'https://github.com/T-angmo/robotTest.git'
                 }
-                sh '. .venv/bin/activate'
-                sh '~/jenkins/simpleApi/robotTest/.venv/bin/pip install robotframework robotframework-requests'
-                sh '~/jenkins/simpleApi/robotTest/.venv/bin/python3 -m robot ~/jenkins/simpleApi/robotTest/robotTest.robot'
+                
+                sh 'robot ~/jenkins/simpleApi/robotTest/robotTest.robot'
             }
         }
 
