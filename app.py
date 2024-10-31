@@ -38,6 +38,7 @@ app = Flask(__name__)
 def power(a, b):
         number1 = float(a)
         number2 = float(b)
+        
         num = number1**number2
         return str(num)
 
