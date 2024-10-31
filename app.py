@@ -24,12 +24,13 @@
 
 from flask import Flask, jsonify
 
-app = Flask(__name__)
+@app.route('/power/<a>/<b>')
 
-@app.route('/mul5/<a>')
-def mul5(a):
-        number = float(a)
-        return str(number * 5)
+def power(a, b):
+        number1 = float(a)
+        number2 = float(b)
+        num = number1**number2
+        return str(num)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
