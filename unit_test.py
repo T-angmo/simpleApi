@@ -62,21 +62,21 @@
 
 
 
-import unittest
-from app import  mul5
+# import unittest
+# from app import  mul5
 
-class TestAPI(unittest.TestCase):
+# class TestAPI(unittest.TestCase):
 
-    def test_x_is_1(self):
-        self.assertEqual(mul5(1), '5.0')
-    def test_x_is_neg10(self):
-        self.assertEqual(mul5(-10), '-50.0')
-    def test_x_is_1dot5(self):
-        self.assertEqual(mul5(1.5), '7.5')
+#     def test_x_is_1(self):
+#         self.assertEqual(mul5(1), '5.0')
+#     def test_x_is_neg10(self):
+#         self.assertEqual(mul5(-10), '-50.0')
+#     def test_x_is_1dot5(self):
+#         self.assertEqual(mul5(1.5), '7.5')
 
 
-if __name__ == '__main__':
-    unittest.main()
+# if __name__ == '__main__':
+#     unittest.main()
 
     # test_case = AppTestCase()
 
@@ -85,3 +85,4 @@ if __name__ == '__main__':
     # test_case.is_prime_true()
     # test_case.is_prime_false()
     # test_case.is_prime_edge_case()
+

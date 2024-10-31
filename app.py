@@ -22,14 +22,16 @@
 # if __name__ == '__main__':
 #     app.run(host='0.0.0.0', port=5000)
 
-from flask import Flask, jsonify
+# from flask import Flask, jsonify
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route('/mul5/<a>')
-def mul5(a):
-        number = float(a)
-        return str(number * 5)
+# @app.route('/mul5/<a>')
+# def mul5(a):
+#         number = float(a)
+#         return str(number * 5)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5000)
+
+
