@@ -86,3 +86,22 @@
     # test_case.is_prime_false()
     # test_case.is_prime_edge_case()
 
+
+import unittest
+from app import  power
+
+class TestAPI(unittest.TestCase):
+
+    def test_x_is_5_3(self):
+        self.assertEqual(power(5, 3), '125.0')
+
+    def test_x_is_4_0(self):
+        self.assertEqual(power(4, 0), '1.0')
+
+    def test_x_is_9_half(self):
+        self.assertEqual(power(9, 0.5), '3.0')
+
+
+if __name__ == '__main__':
+    unittest.main()
+
